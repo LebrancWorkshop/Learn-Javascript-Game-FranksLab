@@ -14,6 +14,8 @@ export class Player {
   frameX: number;
   frameY: number;
   frameNumber: number;
+  speed: number;
+  maxSpeed: number;
 
   constructor(gameWidth: number, gameHeight: number) {
     this.gameWidth = gameWidth;
@@ -36,6 +38,8 @@ export class Player {
     this.frameX = 0;
     this.frameY = 0;
     this.frameNumber = 7;
+    this.speed = 0;
+    this.maxSpeed = 10;
   }
 
   draw(c: CanvasRenderingContext2D) {
@@ -46,6 +50,9 @@ export class Player {
     this.currentState.handleInput(input);
     this.frameX = this.frameX % (this.frameNumber - 1);
     this.frameX++;
+    this.x += this.speed;
+    if(this.x <= 0) this.x = 0;
+    else if(this.x >= canvas.width - this.gameWidth) this.x = canvas.width - this.gameWidth;
   }
 
   setState(state: number) {

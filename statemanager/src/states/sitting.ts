@@ -12,6 +12,7 @@ export class SittingRight extends State {
   enter() {
     this.player.frameY = 8;
     this.player.frameNumber = 5;
+    this.player.speed = 0;
   }
 
   handleInput(input: string) {
@@ -31,6 +32,7 @@ export class SittingLeft extends State {
   enter() {
     this.player.frameY = 9;
     this.player.frameNumber = 5;
+    this.player.speed = 0;
   }
 
   handleInput(input: string) {

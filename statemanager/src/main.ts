@@ -9,7 +9,7 @@ canvas.style.backgroundColor = config.backgroundColor;
 
 // Code.
 window.addEventListener('load', () => {
-  const player = new Player(500, 500);
+  const player = new Player(300, 300);
   const input = new InputHandler();
 
   function animate() {
