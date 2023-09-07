@@ -1,5 +1,5 @@
 import { canvas } from "../canvas";
-import { State } from "../states";
+import { State, StandingRight, StandingLeft } from "../states";
 
 export class Player {
   gameWidth: number;
@@ -17,7 +17,10 @@ export class Player {
   constructor(gameWidth: number, gameHeight: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
-    this.states = [];
+    this.states = [
+      new StandingRight(this),
+      new StandingLeft(this)
+    ];
     this.currentState = this.states[0];
     this.image = new Image();
     this.image.src = '/assets/image/spritesheet/dog.png';

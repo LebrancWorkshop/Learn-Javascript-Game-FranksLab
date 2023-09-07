@@ -10,7 +10,7 @@ export class StandingRight extends State {
   }
 
   enter() {
-    this.player.frameY = 1;
+    this.player.frameY = 0;
   }
 
   handleInput(input: string) {
@@ -27,10 +27,10 @@ export class StandingLeft extends State {
   }
 
   enter() {
-    this.player.frameY = 0;
+    this.player.frameY = 1;
   }
 
   handleInput(input: string) {
-    if(input === 'PRESS right') this.player.setState(states.STANDING_RIGHT); 
+    if(input === 'PRESS right') this.player.setState(states.STANDING_RIGHT);
   }
 };
