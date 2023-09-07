@@ -1,5 +1,5 @@
 import { canvas } from "../canvas";
-import { State, StandingRight, StandingLeft } from "../states";
+import { State, StandingRight, StandingLeft, SittingRight, SittingLeft } from "../states";
 
 export class Player {
   gameWidth: number;
@@ -19,7 +19,9 @@ export class Player {
     this.gameHeight = gameHeight;
     this.states = [
       new StandingRight(this),
-      new StandingLeft(this)
+      new StandingLeft(this),
+      new SittingRight(this),
+      new SittingLeft(this)
     ];
     this.currentState = this.states[0];
     this.image = new Image();
