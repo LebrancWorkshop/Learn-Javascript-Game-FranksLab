@@ -1,5 +1,5 @@
 import { canvas } from "../canvas";
-import { State, StandingRight, StandingLeft, SittingRight, SittingLeft } from "../states";
+import { State, StandingRight, StandingLeft, SittingRight, SittingLeft, RunningRight, RunningLeft } from "../states";
 
 export class Player {
   gameWidth: number;
@@ -13,6 +13,7 @@ export class Player {
   y: number;
   frameX: number;
   frameY: number;
+  frameNumber: number;
 
   constructor(gameWidth: number, gameHeight: number) {
     this.gameWidth = gameWidth;
@@ -21,7 +22,9 @@ export class Player {
       new StandingRight(this),
       new StandingLeft(this),
       new SittingRight(this),
-      new SittingLeft(this)
+      new SittingLeft(this),
+      new RunningRight(this),
+      new RunningLeft(this)
     ];
     this.currentState = this.states[0];
     this.image = new Image();
@@ -32,6 +35,7 @@ export class Player {
     this.y = canvas.height / 2 - this.gameHeight / 2;
     this.frameX = 0;
     this.frameY = 0;
+    this.frameNumber = 7;
   }
 
   draw(c: CanvasRenderingContext2D) {
@@ -40,6 +44,8 @@ export class Player {
 
   update(input: string) {
     this.currentState.handleInput(input);
+    this.frameX = this.frameX % (this.frameNumber - 1);
+    this.frameX++;
   }
 
   setState(state: number) {

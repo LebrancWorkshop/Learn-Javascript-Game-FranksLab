@@ -11,11 +11,12 @@ export class SittingRight extends State {
 
   enter() {
     this.player.frameY = 8;
+    this.player.frameNumber = 5;
   }
 
   handleInput(input: string) {
     if(input === 'PRESS left') this.player.setState(states.SITTING_LEFT);
-    else if(input === 'PRESS up') this.player.setState(states.STANDING_RIGHT);
+    else if(input === 'RELEASE down') this.player.setState(states.STANDING_RIGHT);
   }
 }
 
@@ -29,10 +30,11 @@ export class SittingLeft extends State {
 
   enter() {
     this.player.frameY = 9;
+    this.player.frameNumber = 5;
   }
 
   handleInput(input: string) {
     if(input === 'PRESS right') this.player.setState(states.SITTING_RIGHT);
-    else if(input === 'PRESS up') this.player.setState(states.STANDING_LEFT);
+    else if(input === 'RELEASE down') this.player.setState(states.STANDING_LEFT);
   }
 };
